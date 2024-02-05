@@ -1,0 +1,22 @@
+def contains_square(n):
+    factors = list(factor(n))
+    for i in range(len(factors)):
+        if factors[i][1] > 1:
+            return True
+    return False
+
+def m(d):
+    if d==1:
+        return 1
+    if not contains_square(d):
+        k = len(prime_divisors(d))
+        return (-1)**k
+    return 0
+
+def N(n):
+    N = 0
+    for d in divisors(n):
+        N += m(d) * (2**(n/d))
+    return (1/n)*N
+
+N(10)
